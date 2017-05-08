@@ -1,0 +1,54 @@
+<div class="titleContainer" id="aPropos">
+	<p class='aPropos noselect'>&#192;
+	<br />
+	<br /> PROPOS
+	</p>
+</div>
+
+<!-- qui est qui -->
+<div id="aProposTexte">
+	<div class="blackLogo"></div>
+
+<<<<<<< HEAD
+	<div >
+		<!-- left -->
+		<div ng-bind-html="apropos.starring" class="leftAndRightText leftText"></div>
+
+		<!-- right -->
+		<div class="leftAndRightText rightText">
+			<div class="fr">
+			<div class="rightTextDiv " >
+				<p class="rightTextP" ng-bind-html="apropos.apropos"> </p>
+			</div>
+			</div>
+=======
+	<div ng-bind-html="apropos.starring" class="leftAndRightText leftText"></div>
+
+	<div class="leftAndRightText rightText">
+		<div ng-bind-html="apropos.starring" class="creditsResponsive"></div>
+
+		<div class="fr">
+			<div class="rightTextDiv leftAndRightText">
+				<p class="rightTextP" ng-bind-html="apropos.apropos"> </p>
+			</div>
+>>>>>>> origin/NavbarRefaite
+		</div>
+	</div>
+</div>
+
+<<<<<<< HEAD
+<!-- contact -->
+=======
+>>>>>>> origin/NavbarRefaite
+<div id="contactContainer"  ng-click="showMail = !showMail" class="titleContainer" ng-mouseleave="showMail = false">
+	<div id="mailContainer" ng-show="showMail" class="ng-hide">
+		<a class=contact-link href="mailto:bonjour@portraitsfran&ccedil;ais.com">
+			<div ng-bind-html="apropos.contact" class="contact-link-content"> </div>
+		</a>
+	</div>
+	<di id="contact">
+	<p class='contact noselect'>
+	CONTACT
+	</p>
+</div>
+</div>

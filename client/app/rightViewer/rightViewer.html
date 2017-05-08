@@ -1,0 +1,129 @@
+<div class="titleContainer">
+	<p class='aPropos noselect white'>
+	PORTRA I T
+	</p>
+</div>
+<portraits></portraits>
+
+<div class="mainRightContainer">
+
+		<div class="misere"> </div>
+		<div class="dropdown-menu-wrapper">
+	<div class="dropdown">
+		<script type="text/javascript">
+			$('.dropdown-menu, .dropdown').click(function(e) {
+				e.stopPropagation();
+			});
+
+        </script>
+		<!-- INVITES behind -->
+		<a class="dropdown-toggle" ng-click="showMisere()" data-toggle="dropdown">
+			<p class="itemTitle" ng-click="showMisere()">INVIT&#201;S</p>
+			<div class='redLine' ng-click="showMisere()"></div>
+		</a>
+
+			<ul class="dropdown-menu">
+				<div id="blackTitle">
+					<p class="invites">INVIT&#201;S</p>
+					<div>
+						<div class='redLine'></div>
+					</div>
+					<input class="searchPortrait" data-ng-model="research" type="text" ng-show="showSearchBox" autofocus>
+					<span class="glyphicon glyphicon-search" ng-click="openSearchBox()" ng-show="showMagnifier"></span>
+					<div class="whiteToTransparent">
+					</div>
+				</div>
+				<div class="" id="searchNameContainer">
+					<li ng-repeat="portrait in portraits | filter:research " ng-class="{active: isActive(item.link)}">
+					<a ng-click="goToThisPortrait(portrait.name) ; closeSearchBox()">
+						<p class="portraitName">{{portrait.name}}</p>
+					</a>
+					</li>
+				</div>
+			</ul>
+		</div>
+	</div>
+
+	<img src="assets/images/newsletter.png" ng-show="showEnvelope && !portraitIsOn" class="envelope" ng-click="closeEnvelope()" />
+
+	<div id="RightContainer1" ng-show="!portraitIsOn">
+		 
+		<div id="aLaUne">
+			<a id="aLaUneNameLink" ng-href="/portraits/{{nameAsLink}}"><!-- ng-click="showPortrait()" -->
+				<p id="aLaUneName" class="noselect"> {{threePortraits.current.name}} </p>
+			</a>
+			<p id="aLaUneProfession">{{threePortraits.current.profession}}</p>
+		</div>
+		
+	</div>
+
+	<!-- <section class="fadeIn" ng-show="show"> -->
+
+	<div id="RightContainer2" class="fadeIn"  ng-show="portraitIsOn">
+
+
+
+
+		<div class="mainImgContainer" ng-class="{'intro' : beforeIntroTxt}">
+			<div class="fitImg {{threePortraits.current.format}}">
+			    <img class="noMagnifier" src="{{threePortraits.current.image.url}}"/>
+			    <span class="zoomWrapper">
+				    <img ng-elevate-zoom ng-src="{{threePortraits.current.image.url}}" zoom-image="{{threePortraits.current.image.url}}"/>
+			    </span>
+			    <div id="fitImgFooter">
+					<img class="goZoom" src="assets/images/loupe.svg" alt="Zoom">
+
+
+
+			    	<!-- <img ng-click="Salut()" id="pinterestFooter" src="assets/images/pinterestPortrait.png" /> -->
+  <!--   <div id="Pint">
+        <a class="pinButton" data-pin-do="buttonBookmark" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_16.png" /></a>
+    </div> -->
+    <!-- <a href="https://www.pinterest.com/pin/create/button/"> -->
+    <!-- <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /> -->
+<!-- </a> -->
+					<span class="pinButton">
+						<a data-pin-do="buttonPin" data-pin-round="true" data-pin-save="false" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fwww.flickr.com%2Fphotos%2Fkentbrew%2F6851755809%2F&media={{threePortraits.current.trueImgUrl}}&description={{threePortraits.current.description}}" target="_blank"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_16.png" /></a>
+					<span>
+
+			    	<a class="testRedirect" href="http://twitter.com/share?text=Portraits%20Francais&url={{$location.path();}}&hashtags=ParisTelex,PortraitsFrancais" target="_blank"><img id="twitterFooter" src="assets/images/twitterPortrait.png" /></a>
+			    </div>
+			</div>
+		</div>
+
+
+
+
+
+		
+		<div class="mainTxtContainer" ng-class="{'intro' : beforeIntroTxt}">
+            <span class="xCloseIntroTxt" ng-show="beforeIntroTxt" ng-click="closeIntroTxt()">X</span>
+			<div class="txt">
+	            <div class="introTxt">
+	            	<div class="beforeFirstClick">
+						<p>
+							<h1>{{threePortraits.current.name}}</h1>
+							<h1 class="fadeIn" ng-show="show">{{threePortraits.current.name}}</h1>
+							</br>
+							<p ng-bind-html="threePortraits.current.intro"></p>
+						</p>
+					</div>
+	            	<div class="dotTxtContainer pristineDotClick">
+	            		<div ng-repeat="dot in threePortraits.current.dots track by $index">
+							<p ng-bind-html="dot.data" id="{{dot.ordre}}" class="objets {{dot.ordre}}" ></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- </section> -->
+
+    <div id="arrowNext" ng-click="arrowNextClick()">
+        <p>{{threePortraits.next.name}}</p>
+        <p class="icono-arrow3-down"></p>
+    </div>
+    <!-- </div> -->
+
+</div>

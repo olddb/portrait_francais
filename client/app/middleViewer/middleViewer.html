@@ -1,0 +1,237 @@
+<div class="titleContainer">
+    <p class='title noselect'>GALER<span id="relouI"> I</span>E
+    </p>
+</div>
+
+<!-- The element(s) you want to add scrollbar(s) should have the typical CSS properties of an overflowed block
+		1. height (or max-height) value, 
+		2. overflow value of auto (or hidden) and 
+		3. content long enough to require scrolling -->
+<script>
+
+//Customizing scrollbars
+
+//$("#galleryColone").mCustomScrollbar({
+//	theme:"dark-2",
+//	scrollInertia:1000,
+//	mouseWheel:{scrollAmount:200}
+//});
+
+//$(".dropdown-menu").mCustomScrollbar({
+//	theme:"dark-2",
+//	scrollInertia:1000,
+//	autoHideScrollbar: false
+//});
+
+
+
+
+
+$(".rightTextDiv").mCustomScrollbar({
+	theme:"dark-2",
+	scrollInertia:1000,
+	autoHideScrollbar: true
+});
+//$(".leftText").mCustomScrollbar({
+//	theme:"dark-2",
+//	scrollInertia:1000,
+//	autoHideScrollbar: true
+//});
+(function($){
+	$(window).load(function(){
+		//$("#galleryColone").mCustomScrollbar();
+		//$(".dropdown-menu").mCustomScrollbar();
+		$(".rightText").mCustomScrollbar();
+		//$(".leftText").mCustomScrollbar();
+		//$(".contactP").mCustomScrollbar();
+	});
+})(jQuery);
+
+//-----------------|
+//-----------------|
+
+//Lazy Loading gallery images
+
+(function() {
+var w = window,
+    d = document;
+    function handleGallerieResponsive() {
+	    var e = d.documentElement,
+	    g = d.getElementsByTagName('body')[0],
+	    x = w.innerWidth || e.clientWidth || g.clientWidth,
+	    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+		if (x >= 1300) {
+			$('.twoColumn img, .oneColumn img').removeClass('b-lazy').attr("src", function() {
+			    return $(this).attr('data-src');
+			});
+		}
+		else if (x >= 800) {
+			$('.threeColumn img, .oneColumn img').removeClass('b-lazy').attr("src", function() {
+			    return $(this).attr('data-src');
+			});
+		}
+		else {
+			$('.twoColumn img, .threeColumn img').removeClass('b-lazy').attr("src", function() {
+			    return $(this).attr('data-src');
+			});
+		}
+	}
+	$( window ).resize(function() {
+		handleGallerieResponsive();
+	});
+	var bLazy = new Blazy({
+		container: '#galleryContainer'
+	});
+})();
+         
+</script>
+
+	<div id="galleryContainerWrapper">
+<div id="galleryContainer">
+	<div class="blackLogo"></div>
+
+		<div class="galleryColone">
+
+			<div id="#threeColumns">
+				<div class="column1_3 threeColumn">
+					<div class="galleryThumbnail" ng-repeat="french in portraits | published" ng-show="$index % 3 == 0">
+						<img class="b-lazy" data-src="{{french.thumbnail.url}}" width="{{french.thumbnail.width}}" height="{{french.thumbnail.height}}" alt="" ng-click="goToThisPortrait(french.name)"/>
+						<legend>{{french.name}}</legend>
+					</div>
+				</div>
+				<div class="column2_3 threeColumn">
+					<div class="galleryThumbnail" ng-repeat="french in portraits | published" ng-show="$index % 3 == 1">
+						<img class="b-lazy" data-src="{{french.thumbnail.url}}" width="{{french.thumbnail.width}}" height="{{french.thumbnail.height}}" alt="" ng-click="goToThisPortrait(french.name)"/>
+						<legend>{{french.name}}</legend>
+					</div>
+				</div>
+				<div class="column3_3 threeColumn">
+					<div class="galleryThumbnail" ng-repeat="french in portraits | published" ng-show="$index % 3 == 2">
+						<img class="b-lazy" data-src="{{french.thumbnail.url}}" width="{{french.thumbnail.width}}" height="{{french.thumbnail.height}}" alt="" ng-click="goToThisPortrait(french.name)"/>
+						<legend>{{french.name}}</legend>
+					</div>
+				</div>
+			</div>
+			<div class="column1_2 twoColumn">
+				<div class="galleryThumbnail" ng-repeat="french in portraits | published" ng-show="$index % 2 == 0">
+					<img class="b-lazy" data-src="{{french.thumbnail.url}}" width="{{french.thumbnail.width}}" height="{{french.thumbnail.height}}" alt="" ng-click="goToThisPortrait(french.name)"/>
+					<legend>{{french.name}}</legend>
+				</div>
+			</div>
+			<div class="column2_2 twoColumn">
+				<div class="galleryThumbnail" ng-repeat="french in portraits | published" ng-show="$index % 2 == 1">
+					<img class="b-lazy" data-src="{{french.thumbnail.url}}" width="{{french.thumbnail.width}}" height="{{french.thumbnail.height}}" alt="" ng-click="goToThisPortrait(french.name)"/>
+					<legend>{{french.name}}</legend>
+				</div>
+			</div>
+
+			<div class="column1_1 oneColumn">
+				<div class="galleryThumbnail" ng-repeat="french in portraits | published">
+					<img class="b-lazy" data-src="{{french.thumbnail.url}}" width="{{french.thumbnail.width}}" height="{{french.thumbnail.height}}" alt="" ng-click="goToThisPortrait(french.name)"/>
+					<legend>{{french.name}}</legend>
+				</div>
+			</div>
+		</div>
+</div>
+	</div>
+
+<!-- <div id="galleryContainer">
+	<div class="galleryColumns">
+		<div class="column1_3 threeColumn">
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="http://lorempixel.com/image_output/sports-q-c-640-480-1.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="http://lorempixel.com/image_output/nature-q-c-640-480-8.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='spinner.gif' data-src="http://lorempixel.com/image_output/nightlife-q-c-640-480-4.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='spinner.gif' data-src="http://lorempixel.com/image_output/nightlife-q-c-640-480-4.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='spinner.gif' data-src="http://lorempixel.com/image_output/city-q-c-1176-1166-10.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='https://i.ytimg.com/vi/ib3QuEp2TIA/maxresdefault.jpg' data-src="http://lorempixel.com/image_output/people-h-c-537-784-1.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+		</div>
+		<div class="column2_3 threeColumn">
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="http://lorempixel.com/image_output/sports-q-c-640-480-1.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="http://lorempixel.com/image_output/nature-q-c-640-480-8.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='spinner.gif' data-src="http://lorempixel.com/image_output/nightlife-q-c-640-480-4.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='spinner.gif' data-src="http://lorempixel.com/image_output/nightlife-q-c-640-480-4.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='spinner.gif' data-src="http://lorempixel.com/image_output/city-q-c-1176-1166-10.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+			<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" src='https://i.ytimg.com/vi/ib3QuEp2TIA/maxresdefault.jpg' data-src="http://lorempixel.com/image_output/people-h-c-537-784-1.jpg">
+				<legend>Je suis une legende</legend>
+			</div>
+		</div>
+		<div class="column3_3 threeColumn">
+			<div class="galleryThumbnailContainer">	
+				<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="https://i.ytimg.com/vi/ib3QuEp2TIA/maxresdefault.jpg">
+					<legend>Je suis une legende</legend>
+				</div>
+			</div>
+			<div class="galleryThumbnailContainer">
+				<div class="galleryThumbnail">
+					<legend>Je suis une legende</legend>
+				</div>
+			</div>
+			<div class="galleryThumbnailContainer">	
+				<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="https://i.ytimg.com/vi/ib3QuEp2TIA/maxresdefault.jpg">
+					<legend>Je suis une legende</legend>
+				</div>
+			</div>
+			<div class="galleryThumbnailContainer">	
+				<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="https://i.ytimg.com/vi/ib3QuEp2TIA/maxresdefault.jpg">
+					<legend>Je suis une legende</legend>
+				</div>
+			</div>
+			<div class="galleryThumbnailContainer">
+				<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="http://kingofwallpapers.com/space/space-011.jpg">
+					<legend>Je suis une legende</legend>
+				</div>
+			</div>
+			<div class="galleryThumbnailContainer">
+				<div class="galleryThumbnail">
+				<img class=b-lazy src=data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== src="blank.gif" width="640" height="480" data-src="https://i.ytimg.com/vi/ib3QuEp2TIA/maxresdefault.jpg">
+					<legend>Je suis une legende</legend>
+				</div>
+			</div>
+		</div>
+		<div class="column1_2 twoColumn">
+		</div>
+		<div class="column2_2 twoColumn">
+		</div>
+		<div class="column1_1 oneColumn">
+		</div>
+	</div>
+</div>
+ -->

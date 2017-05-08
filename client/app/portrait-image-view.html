@@ -1,0 +1,84 @@
+<div class="titleContainer">
+	<p class='aPropos noselect white'>
+	PORTRA I T
+	</p>
+</div>
+
+<div class="mainRightContainer">
+
+	<div class="dropdown">
+
+		<script type="text/javascript">
+			$('.dropdown-menu, .dropdown').click(function(e) {
+				e.stopPropagation();
+			});
+		</script>
+
+		<a class="dropdown-toggle" data-toggle="dropdown">
+			<p class="itemTitle">INVIT&#201;S</p>
+			<div class='redLine'></div>
+		</a>
+
+		<ul class="dropdown-menu">
+			<div id="blackTitle">
+				<p>INVIT&#201;S</p>
+				<div>
+					<div class='redLine'></div>
+				</div>
+				<input class="searchPortrait" data-ng-model="research" type="text" ng-show="showSearchBox" autofocus>
+				<span class="glyphicon glyphicon-search" ng-click="openSearchBox()" ng-show="showMagnifier"></span>
+			</div>
+			<div id="searchNameContainer">
+				<li ng-repeat="portrait in portraits | filter:research " ng-class="{active: isActive(item.link)}">
+					<a ng-click="setThreePortraits(portrait.name) ; closeSearchBox()">
+						<p class="portraitName">{{portrait.name}}</p>
+					</a>
+				</li>
+			</div>
+		</ul>
+	</div>
+
+	<span ng-show="showEnvelope" class="glyphicon glyphicon-envelope" ng-click="closeEnvelope()">
+	</span>
+
+	<div id="RightContainer1">
+		<div id="Prev">
+			<p id="aLaUneName" class="noselect"> {{threePortraits.prev.name}} </p>
+			<p id="aLaUneProfession"> {{threePortraits.prev.profession}} </p>
+		</div>
+		<div id="aLaUne">
+			<a ng-href="/portraits/{{threePortraits.current.name}}">
+				<p id="aLaUneName" class="noselect"> {{threePortraits.current.name}} </p>
+			</a>
+			<p id="aLaUneProfession">{{threePortraits.current.profession}}</p>
+		</div>
+		<div id="Next">
+			<p id="aLaUneName" class="noselect">{{threePortraits.next.name}}</p>
+			<p id="aLaUneProfession">{{threePortraits.next.profession}}</p>
+		</div>
+		<div id="bottomRight">
+			<div class="bottomRightContainer">
+				<div id="arrowNext" ng-click="arrowNextClick()">
+					<p>{{threePortraits.next.name}}</p>
+					<p class="icono-arrow3-down"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="RightContainer2" style="/*display: none;*/">
+		<div id="aLaUne">
+			<p id="aLaUneName" class="noselect">{{buffer.name}}</p>
+			<p id="aLaUneProfession">{{buffer.profession}}</p>
+		</div>  
+		<div id="bottomRight">
+			<div class="bottomRightContainer">
+				<div id="arrowNext" ng-click="arrowNextClick()">
+					<p>{{buffer.next}}</p>
+					<p class="icono-arrow3-down"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,10 @@
+<section data-ng-controller="PortraitsController" data-ng-init="find">
+	<div ng-include="'components/navbar/navbar.html'"></div>
+
+
+	<div id="viewer">
+		<left-viewer ng-click="foldToggle('left')" class="{{'left' == foldPanel ? 'unfold' : 'fold'}}"></left-viewer>
+		<middle-viewer ng-click="foldToggle('middle')" class="{{'middle' == foldPanel ? 'unfold' : 'fold'}}"></middle-viewer>
+		<right-viewer ng-click="foldToggle('right')" class="{{'right' == foldPanel ? 'unfold' : 'fold'}}"></right-viewer>
+	</div>
+</section>

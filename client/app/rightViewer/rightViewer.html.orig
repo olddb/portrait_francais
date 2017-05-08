@@ -1,0 +1,121 @@
+<div class="titleContainer">
+	<p class='aPropos noselect white'>
+	PORTRA I T
+	</p>
+</div>
+<portraits></portraits>
+
+<div class="mainRightContainer">
+
+<<<<<<< HEAD
+		<div class="misere"> </div>
+		<div class="dropdown-menu-wrapper">
+=======
+	<div class="dropdown-menu-wrapper">
+>>>>>>> origin/newLayoutanimation
+	<div class="dropdown">
+
+		<script type="text/javascript">
+			$('.dropdown-menu, .dropdown').click(function(e) {
+				e.stopPropagation();
+			});
+
+        </script>
+		<!-- INVITES behind -->
+		<a class="dropdown-toggle" ng-click="showMisere()" data-toggle="dropdown">
+			<p class="itemTitle" ng-click="showMisere()">INVIT&#201;S</p>
+			<div class='redLine' ng-click="showMisere()"></div>
+		</a>
+
+			<ul class="dropdown-menu">
+				<div id="blackTitle">
+					<p  class="invites">INVIT&#201;S</p>
+					<div>
+						<div class='redLine'></div>
+					</div>
+					<input class="searchPortrait" data-ng-model="research" type="text" ng-show="showSearchBox" autofocus>
+					<span class="glyphicon glyphicon-search" ng-click="openSearchBox()" ng-show="showMagnifier"></span>
+					<div class="whiteToTransparent">
+					</div>
+				</div>
+				<div class="" id="searchNameContainer">
+					<li ng-repeat="portrait in portraits | filter:research " ng-class="{active: isActive(item.link)}">
+					<a ng-click="goToThisPortrait(portrait.name) ; closeSearchBox()">
+						<p class="portraitName">{{portrait.name}}</p>
+					</a>
+					</li>
+				</div>
+			</ul>
+		</div>
+	</div>
+
+	<img src="assets/images/newsletter.png" ng-show="showEnvelope && !portraitIsOn" class="envelope" ng-click="closeEnvelope()" />
+
+	<div id="RightContainer1" ng-show="!portraitIsOn">
+		 
+		<div id="aLaUne">
+			<a id="aLaUneNameLink" ng-click="showPortrait()" ng-href="/portraits/{{nameAsLink}}">
+				<p id="aLaUneName" class="noselect"> {{threePortraits.current.name}} </p>
+			</a>
+			<p id="aLaUneProfession">{{threePortraits.current.profession}}</p>
+		</div>
+		
+	</div>
+
+	<!-- <section class="fadeIn" ng-show="show"> -->
+
+	<div id="RightContainer2" class="fadeIn"  ng-show="portraitIsOn">
+
+
+
+
+		<div class="mainImgContainer" ng-class="{'intro' : beforeIntroTxt}">
+			<div class="fitImg {{threePortraits.current.format}}">
+			    <img class="noMagnifier" src="{{threePortraits.current.image.url}}"/>
+			    <span class="zoomWrapper">
+				    <img ng-elevate-zoom ng-src="{{threePortraits.current.image.url}}" zoom-image="{{threePortraits.current.image.url}}"/>
+			    </span>
+			    <div id="fitImgFooter">
+			    	<span class="glyphicon glyphicon-search goZoom"></span>
+			    	<img id="pinterestFooter" src="assets/images/pinterestPortrait.png" />
+			    	<img id="twitterFooter" src="assets/images/twitterPortrait.png" />
+			    </div>
+			</div>
+		</div>
+
+
+
+
+
+		
+		<div class="mainTxtContainer" ng-class="{'intro' : beforeIntroTxt}">
+			<div class="txt">
+	            <span class="xCloseIntroTxt" ng-show="beforeIntroTxt" ng-click="closeIntroTxt()">&#10799</span>
+	            <div class="introTxt">
+	            	<div ng-show="beforeIntroTxt">
+						<p>
+							<h1>{{threePortraits.current.name}}</h1>
+							<h1 class="fadeIn" ng-show="show">{{threePortraits.current.name}}</h1>
+							</br>
+							<p ng-bind-html="threePortraits.current.intro"></p>
+						</p>
+					</div>
+	            	<div class="dotTxtContainer pristineDotClick" ng-show="!beforeIntroTxt">
+	            		<div ng-repeat="dot in threePortraits.current.dots track by dot.ordre">
+							<p ng-bind-html="dot.data" id="{{dot.ordre}}" class="objets {{dot.ordre}}" ></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- </section> -->
+
+    <div id="arrowNext" ng-click="arrowNextClick()">
+        <p>{{threePortraits.next.name}}</p>
+        <p class="icono-arrow3-down"></p>
+    </div>
+    <!-- </div> -->
+
+</div>

@@ -1,0 +1,135 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div id="editorMainContainer">
+
+
+<div class="blackLogo"></div>
+	<!-- portraits list -->
+	<div class="rightContentContainerIndex" ng-show="!portrait">
+
+
+		<div class="text-center">
+			<button ng-click="goToEditPortrait()" type="button" class="btn btn-success createNew" aria-label="Left Align">
+				Creer un nouveau Portrait
+			</button>
+			</br>
+			<button type="button" class="btn btn-info createNew" id="modifierAPropos" aria-label="Left Align">
+				Modifier A Propos
+			</button>
+		</div>
+
+		<div id="aProposEditor">
+			<span class="glyphicon glyphicon-remove" id="closeAPropos"></span>
+
+			<div class="aProposEditorLeft">
+				<div ta-text-editor-class="" ta-html-editor-class="" ng-model="apropos.starring" placeholder="{{apropos.starring}}" text-angular>
+				</div>
+				<div ta-text-editor-class="" ta-html-editor-class="" ng-model="apropos.contact" placeholder="{{apropos.contact}}" text-angular>
+				</div>
+			</div>
+			<div class="aProposEditorRight">
+				<div ta-text-editor-class="" ta-html-editor-class="" ng-model="apropos.apropos" placeholder="{{apropos.apropos}}" text-angular>
+				</div>
+			</div>
+			<span class="glyphicon glyphicon-pencil"></span>
+			<span class="glyphicon glyphicon-ok" ng-click="update(apropos)"></span>
+
+		</div>
+
+		<div style="background-color: {{portrait.color}};" class="portraitThumbnail col-xs-6 col-md-4" ng-repeat="portrait in portraits">
+
+			<a  href="/editor/{{portrait.name}}">
+				<p class="nameOnThumb"> {{portrait.name}} </p>
+				<div class="thumbnailContainer">
+				<img class="thumbnail" src="{{portrait.thumbnail.url}}">
+				</div>
+			</a>
+			<div class="buttons">
+
+				<button ng-click="goToEditPortrait(portrait.name)" type="button" class="btn btn-success" aria-label="Left Align">
+					<span class="glyphicon glyphicon glyphicon-pencil"></span>
+				</button>
+
+				<button type="button" ng-click="remove(portrait)" class="btn btn-danger" aria-label="Left Align">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- update portrait view -->
+	<div class="editorContainer" ng-show="portrait" style="background-color: {{portrait.color}};">
+		<div id="leftNavContainer">
+			<ul>
+				<li>Nom</li>
+				<input ng-model="portrait.name"></input>
+				<li>Profession</li>
+				<input ng-model="portrait.profession"></input>
+				<li>Couleur de fond</li>
+				<input colorpicker type="text" ng-model="portrait.color" />
+				<li><button type="button" ng-click="editIntro()" class="editerIntro btn btn-success">Editer l'introduction</button></li>
+				
+				<li>Image</li>
+				<form novalidate>
+
+					<!-- image input (image)-->
+					<input type="file"  id="imageFile" name="image" accept="image/*" >
+					<div class="upload">
+					<!-- upload input (image id+onclick)-->
+						<input ng-click="upload('image')" name="file-picker"
+						id="uploadButton" class="imageClass" type="submit" onchange="readFile(this.files[0])">
+					</div>
+				</form>	
+
+				<li>Vignette</li>
+				<form novalidate>
+
+					<!-- thumbnail input (thumbnail)-->
+					<input type="file"  id="thumbnailFile" name="thumbnail" accept="image/*" >
+					<div class="upload">
+					<!-- upload input (thumbnailId id+onclick)-->
+						<input ng-click="upload('thumbnail')"
+						name="file-picker" id="uploadButton"
+						class="thumbnailClass" type="submit" onchange="readFile(this.files[0])">
+					</div>
+				</form>	
+			</ul>
+
+
+
+
+				<div class="fitThumbnail">
+					<img id="imgThumbnailId" ng-src="{{thumbnail.data && thumbnail.data || portrait.thumbnail.url}}">
+				</div>
+
+			<a href="/editor">
+		    <button type="button" class="resetButton annulerPortrait btn btn-success">
+				Retour</button>
+			</a>
+		    <button type="button" ng-click="update(portrait)" class="resetButton validerPortrait btn btn-success">Valider le Portrait</button>
+
+		</div>
+		<div class="editorIMG">
+			<div class="mainImgContainer">
+				<div class="fitImg {{portrait.thumbnail.format}}">
+<<<<<<< HEAD
+					<img id="imgImageId" ng-src="{{imageToEdit.data && imageToEdit.data || portrait.image.url}}">
+=======
+					<img id="portraitImage" ng-src="{{imageToEdit.data && imageToEdit. 	data || portrait.image.url}}">
+>>>>>>> origin/zoomZoomZang
+				</div>
+			</div>
+		</div>
+
+		<div ng-show="showTextEditor" class="dotEditorText" ta-text-editor-class="textEditor" ta-html-editor-class="textEditor" text-angular ng-model="currDot.data"></div>
+		<span ng-show="showTextEditor"  class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="addDot()"></span>
+		<span ng-show="showTextEditor"  class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeText()"></span>
+
+		<div ng-show="showIntroTextEditor" class="introEditorText" ta-text-editor-class="textEditor" ta-html-editor-class="textEditor" text-angular ng-model="portrait.intro" placeholder="{{portrait.intro}}"></div>
+		<span ng-show="showIntroTextEditor" class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="addIntro()"></span>
+		<span ng-show="showIntroTextEditor" class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeIntroText()"></span>
+	</div>
+
+</div>
+<div class="divJustToKeepSomeAttr"> </div>

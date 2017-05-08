@@ -1,0 +1,140 @@
+<!-- panel -->
+<mobile-panel></mobile-panel>
+
+<!-- newsletter -->
+<newsletter ng-show="showNewsletter" class="newsletter"></newsletter>
+
+
+
+<!-- | |__   ___  __ _  __| | ___ _ __  -->
+<!-- | '_ \ / _ \/ _` |/ _` |/ _ \ '__| -->
+<!-- | | | |  __/ (_| | (_| |  __/ |    -->
+<!-- |_| |_|\___|\__,_|\__,_|\___|_|  	-->
+<div ng-controller="NavbarCtrl">
+	<div id="mobile-base">
+		<div>
+			<div class="mobile-red-dot"> </div>
+			<img  ng-click="panelToggle()" responsive-toggle toggle-width="300" id="mobile-menu-logo" src="assets/images/menu-icon.svg">
+			<div class="mobile-leftWhiteNav"></div>
+			<img class="mobile-logo" src="assets/images/portraitfrancaislogo.svg">
+			<div class="mobile-rightWhiteNav"></div>
+		</div>
+	</div>
+</div>
+ <!-- _ __  _ __ ___  ___  ___ _ __ | |_ __ _| |_(_) ___  _ __   -->
+<!-- | '_ \| '__/ _ \/ __|/ _ \ '_ \| __/ _` | __| |/ _ \| '_ \  -->
+<!-- | |_) | | |  __/\__ \  __/ | | | || (_| | |_| | (_) | | | | -->
+<!-- | .__/|_|  \___||___/\___|_| |_|\__\__,_|\__|_|\___/|_| |_| -->
+<!-- |_|                                                         -->
+
+<!-- portrait name -->
+<div id="presentationContainer" ng-show="!portraitIsOn">
+	<div id="mobileALaUne">
+		<a id="mobileALaUneNameLink" ng-click="showPortrait()" ng-href="/portraits/{{nameAsLink}}">
+			<p id="mobileALaUneName" class="mobile-noselect"> {{threePortraits.current.name}} </p>
+		</a>
+		<p id="mobileALaUneProfession">{{threePortraits.current.profession}}</p>
+	</div>
+</div>
+<!-- _                              -->
+<!-- (_)_ __ ___   __ _  __ _  ___  -->
+<!-- | | '_ ` _ \ / _` |/ _` |/ _ \ -->
+<!-- | | | | | | | (_| | (_| |  __/ -->
+<!-- |_|_| |_| |_|\__,_|\__, |\___| -->
+<!-- 					|___/   	-->
+<div id="imageAndTextContainer"  class="mobileFadeIn">
+<!-- ng-show="portraitIsOn" -->
+	<div class="mobile-mainImgContainer" ng-class="{'mobile-intro' : beforeIntroTxt}">
+		<div class="mobilepage mobilemainpage" id="mobile{{threePortraits.current.format}}">
+			<div id="mobileFitImg" class="mobile-fitImg {{threePortraits.current.format}}">
+				<img class="mobileImage" ng-show="portraitIsOn" ng-click="removeTouchIcon()" ng-src="{{threePortraits.current.image.url}}"/>
+			</div>
+		</div>
+	</div>
+	<!-- portrait name under image -->
+	<div class="smallportraitNameUnderImage" ng-show="portraitIsOn">{{threePortraits.current.name}}</div>
+<!-- _            _                   _                              -->
+<!-- | |_ _____  _| |_    ___  _ __   (_)_ __ ___   __ _  __ _  ___  -->
+<!-- | __/ _ \ \/ / __|  / _ \| '_ \  | | '_ ` _ \ / _` |/ _` |/ _ \ -->
+<!-- | ||  __/>  <| |_  | (_) | | | | | | | | | | | (_| | (_| |  __/ -->
+ <!-- \__\___/_/\_\\__|  \___/|_| |_| |_|_| |_| |_|\__,_|\__, |\___| -->
+                                                    <!-- |___/       -->
+	<div class="mobile-mainTxtContainer" ng-show="portraitIsOn" ng-class="{'mobile-intro' : beforeIntroTxt}">
+		<div class="mobile-txt">
+			<div>
+				<img src="../../assets/images/blackCross.svg" ng-click="mobileCloseIntroTxt(); displayTouchIcon()" class="cross" >
+			</div>
+			<div class="mobile-introTxt">
+				<div class="mobile-introDiv">
+					<p>
+					<h1 class="portraitNameInIntro">{{threePortraits.current.name}}</h1>
+					<h1 class="mobile-fadeIn" ng-show="show">{{threePortraits.current.name}}</h1>
+					</br>
+					<p  ng-bind-html="threePortraits.current.intro"></p>
+					</p>
+				</div>
+				<!-- dots -->
+				<div class="mobile-dotTxtContainer pristineDotClick" >
+					<div ng-repeat="dot in threePortraits.current.dots track by $index">
+						<p ng-bind-html="dot.data" id="{{dot.ordre}}" class="objets {{dot.ordre}}" ></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ <!-- _                   _       _                  -->
+<!-- | |_ ___  _   _  ___| |__   (_) ___ ___  _ __   -->
+<!-- | __/ _ \| | | |/ __| '_ \  | |/ __/ _ \| '_ \  -->
+<!-- | || (_) | |_| | (__| | | | | | (_| (_) | | | | -->
+ <!-- \__\___/ \__,_|\___|_| |_| |_|\___\___/|_| |_| -->
+<img class="touchIcon" src="../../assets/images/touch.svg" alt="">
+  <!-- __ _ _ __ _ __ _____      __ -->
+ <!-- / _` | '__| '__/ _ \ \ /\ / / -->
+<!-- | (_| | |  | | | (_) \ V  V /  -->
+ <!-- \__,_|_|  |_|  \___/ \_/\_/   -->
+<div class="one bigArrowName" id="mobileArrowNext">
+	<!-- arrow name -->
+	<div>
+		<p id="p1" ng-click="mobileArrowNextClick();" class="two bigName mobileNextName">{{threePortraits.next.name}}</p>
+	</div>
+	<p id="p2" class="icono-arrow3-down" ng-click="mobileArrowNextClick(); removeTouchIcon()"></p>
+</div>
+<!-- __   _(_) _____      _____  -->
+<!-- \ \ / / |/ _ \ \ /\ / / __| -->
+<!--  \ V /| |  __/\ V  V /\__ \ -->
+<!--   \_/ |_|\___| \_/\_/ |___/ -->
+
+<!-- invites -->
+<div class="invitesView off views viewsColor">
+	<p id="mobile-invites">INVIT&#201;S</p>
+	<div>
+		<div id="mobileredline" class='redline'></div>
+	</div>
+
+	<ul class="mobilePortraitsList">
+		<li ng-repeat="portrait in portraits | filter:research" >
+			<a ng-click="mobileGoToThisPortrait(portrait.name)">
+				<p class="portraitName">{{portrait.name}}</p>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<!-- contact -->
+<div  class="contactView off views viewsColor">
+	<div class="mobile-contact" ng-bind-html="apropos.contact">
+	</div>
+</div>
+
+<!-- galerie -->
+<div class="galerieView off views viewsColor">
+</div>
+
+<!-- a propos -->
+<div class="proposView off views viewsColor">
+	<div class="ov">
+	<div class="apropos" ng-bind-html="apropos.apropos"> </div>
+	<div class="starring" ng-bind-html="apropos.starring"> </div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+.trash { color:rgb(209, 91, 71); }
+
+.container {
+	margin-top:200px;
+}
+.onBody {
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	top:0;
+	background-color: #071b34;
+	color:white;
+}
+.list-group {
+	color:black;
+}
+.list-group-item {
+font-size: 18px;
+}
+.userName {
+	display:inline-block;
+	width:150px;
+}
+.trash {
+	/* display:inline-block; */
+	float:right;
+	vertical-align:middle;
+	padding-top:10px;
+}
+.trash:hover {
+	cursor: pointer;
+	font-weight: bold ;
+	color: rgb(209, 91, 71);
+}
+.red {
+	color:#d2232a;
+}
+.redback {
+	background-color : #d2232a;
+}
+input {
+	max-width: 337px;
+}
+.form-group {
+	position: relative;
+	margin:auto;
+}
+.centerWrapper {
+	position:relative;
+}
+/* cause bootstrap css overrides mixins.less */
+.resetButton {
+	background-color : #d2232a;
+    color: #fff;
+    text-decoration: none;
+	border:none;
+}
+.resetButton:hover {
+	background-color : #d2232a;
+    color: #333;
+    text-decoration: none;
+	border:none;
+}
+.userName {
+	font-size:18px;
+}
+

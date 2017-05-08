@@ -1,0 +1,81 @@
+#newsletter {
+    z-index: 16;
+}
+
+#newsletter:hover {
+    cursor: move;
+}
+
+#newsletter input {
+    border-radius: 0 0 0 0;
+    text-align: center;
+    border: 0px;
+    height: 33px;
+}
+
+#callToAction {
+    font-size: 1.25em;
+}
+
+#crossclose:hover {
+    cursor: pointer;
+}
+#crossclose {
+	height:23px;
+}
+
+@media screen and (min-width: 750px) {
+    .row {
+        width: 100%;
+        padding-left: 20px;
+    }
+    #newsletter {
+        background-color: #d2232a;
+        position: fixed;
+        width: 275px;
+        padding: 30px 15px 20px 15px;
+        font-size: 0.8em;
+        right: 30px;
+        top: 25%;
+    }
+    #crossclose {
+        font-family: none;
+        position: absolute;
+        font-size: 1.5em;
+        right: 10px;
+        top: 7px;
+        color: white;
+    }
+}
+
+label, input {
+    width: 100%;
+}
+.suscribeButton {
+    left: -50000px;
+}
+@media screen and (max-width: 750px) {
+    .row {
+        width: 49%;
+        margin: auto;
+        display: inline-block;
+    }
+    #newsletter {
+        width: 100%;
+        bottom: 0px;
+        background-color: #d2232a;
+        position: fixed;
+        padding: 15px 15px 20px 15px;
+    }
+    #crossclose {
+        position: absolute;
+        font-size: 1.5em;
+        right: 7px;
+        top: 7px;
+        color: white;
+    }
+    .smallWindow {
+        left: 0px !important;
+        bottom: 0px !important;
+    }
+}

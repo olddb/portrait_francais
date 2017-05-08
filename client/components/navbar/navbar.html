@@ -1,0 +1,25 @@
+<div ng-controller="NavbarCtrl" id="navy">
+	<div class="leftWhiteNav"></div>
+	<a class="logo" href="/">
+		<img class="svgLogo" src="assets/images/portraitfrancaislogo.svg">
+	</a>
+	<div class="redDot"></div>
+	<div class="rightWhiteNav"></div>
+	<div class="navbar navbar-default navbar-static-top">
+
+			<div class="nav-left" ng-show="portraitIsOn">
+				{{urlPortrait}}
+			</div>
+			<div class="nav-left" ng-show="connected">
+				<p class="userName" >{{user.name}} </p>
+				<button class="resetButton" ng-click="logout()" ng-href="/"> se déconnecter </button>
+			</div>
+
+		<div class="nav-right">
+			<div class="socialIcons">
+				<a href="https://fr.pinterest.com/porfrancais/" target="_blank"><img src="assets/images/pinterest.png" alt="pinterest"></a>
+				<a href="https://www.instagram.com/portraitsfrancais/" target="_blank"><img src="assets/images/instagram.png" alt="instagram"></a>
+			</div>
+		</div>
+	</div>
+</div>

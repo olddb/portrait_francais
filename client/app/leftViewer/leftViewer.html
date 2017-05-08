@@ -1,0 +1,32 @@
+<div class="titleContainer" id="aPropos">
+	<p class='aPropos noselect'>&#192;
+	<br />
+	<br /> PROPOS
+	</p>
+</div>
+
+
+<div id="aProposTexte">
+<div class="blackLogo"></div>
+	<div ng-bind-html="apropos.starring" class="leftAndRightText leftText"></div>
+	<div class="leftAndRightText rightText">
+		<div ng-bind-html="apropos.starring" class="responsiveLeft"></div>
+		<div class="aProposWrapper">
+			<p ng-bind-html="apropos.apropos"> </p>
+		</div>
+	</div>
+</div>
+
+
+<div id="contactContainer"  ng-click="showMail = !showMail" class="titleContainer" ng-mouseleave="showMail = false">
+	<div id="mailContainer" ng-show="showMail" class="ng-hide">
+		<a class=contact-link href="mailto:bonjour@portraitsfran&ccedil;ais.com">
+			<div ng-bind-html="apropos.contact" class="contact-link-content"> </div>
+		</a>
+	</div>
+	<di id="contact">
+	<p class='contact noselect'>
+	CONTACT
+	</p>
+</div>
+</div>

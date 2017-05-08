@@ -1,0 +1,171 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div id="editorMainContainer">
+
+
+	<div class="blackLogo"></div>
+	<!-- portraits list -->
+	<div class="rightContentContainerIndex" ng-show="!portrait">
+
+
+		<div class="text-center">
+			<button ng-click="goToEditPortrait()" type="button" class="btn btn-success createNew" aria-label="Left Align">
+				Creer un nouveau Portrait
+			</button>
+			</br>
+			<button type="button" class="btn btn-info createNew" id="modifierAPropos" aria-label="Left Align">
+				Modifier A Propos
+			</button>
+		</div>
+
+		<div id="aProposEditor">
+			<span class="glyphicon glyphicon-remove" id="closeAPropos"></span>
+
+			<div class="aProposEditorLeft">
+				<!-- starring field -->
+				<div ta-text-editor-class="" ta-html-editor-class=""
+					ng-model="apropos.starring" placeholder="{{apropos.starring}}" text-angular>
+				</div>
+				<!-- a propos field -->
+				<div ta-text-editor-class="" ta-html-editor-class=""  
+					ng-model="apropos.contact" placeholder="{{apropos.contact}}" text-angular>
+				</div>
+			</div>
+			<div class="aProposEditorRight">
+				<div ta-text-editor-class="" ta-html-editor-class="" ng-model="apropos.apropos" placeholder="{{apropos.apropos}}" text-angular>
+				</div>
+			</div>
+			<span class="glyphicon glyphicon-pencil"></span>
+			<span class="glyphicon glyphicon-ok" ng-click="update(apropos)"></span>
+
+		</div>
+
+		<div style="background-color: {{portrait.color}};" class="portraitThumbnail col-xs-6 col-md-4" ng-repeat="portrait in portraits">
+
+			<a  ng-href="/editor/{{portrait.name|spaceLess}}">
+				<p class="nameOnThumb"> {{portrait.name}} </p>
+				<div class="thumbnailContainer">
+					<img class="thumbnail" src="{{portrait.thumbnail.url}}">
+				</div>
+			</a>
+			<div class="buttons">
+
+				<button ng-click="goToEditPortrait(portrait.name)" type="button" class="btn btn-success" aria-label="Left Align">
+					<span class="glyphicon glyphicon glyphicon-pencil"></span>
+				</button>
+
+				<button type="button" ng-click="remove(portrait)" class="btn btn-danger" aria-label="Left Align">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- update portrait view -->
+	<div class="editorContainer" ng-show="portrait" style="background-color: {{portrait.color}};">
+		<div id="leftNavContainer">
+
+			<div id="dotEditor" ng-show="dotEditorShow">
+				<p><h2> Veuillez bien "Valider le portrait" (le bouton en bas a gauche) AVANT de tenter d'editer les points ci-dessous.</h2></p>
+				<div class="dotEditorUnit" ng-repeat="dot in portrait.dots track by $index" id="{{$index + hie}}">
+					<div class="ordre">
+						{{dot.ordre}}
+					</div>
+					<div class="styleDotPlus">
+						<h3>Color</h3>
+						<input type="text" class="hexaColor form-control" placeholder="{{dot.hex}}">
+						<p class="commentStyle">*N'importe quel hexa code supporte par le html, dans le doute, utilisez le 'color picker' present pour choisir le fond du portrait</p>
+						<h3>Style</h3>
+						<input type="text" class="style form-control" placeholder="{{dot.style}}">
+						<p class="commentStyle">*Vous avez le choix entre 'custom' et 'default'</p>
+					</div>
+					<div>
+						<button type="button" ng-click="fillDotStyle(dot.ordre)" class="styleDot btn btn-success">Changer le style de point</button>
+					</div>
+					<div class="actionContainer">
+						<span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="editThisDot(dot.ordre)"></span>
+						<span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeThisDot(dot.ordre)"></span>
+					</div>
+					<div class="dataDotEditor" ng-bind-html="dot.data">
+					</div>
+				</div>
+			</div>
+
+
+			<!-- form -->
+			<form name="form" novalidate class="portraitForm">
+				<ul>
+					<li>On</li> <input 	type="checkbox" ng-model="portrait.publish" name="publish" >
+
+					<li>Nom</li> 			<input type="text" required="" name="name" ng-model="portrait.name"></input>
+					<li ng-show="form.$submitted || form.name.$touched">
+						<div ng-show="form.name.$error.required">champs requis</div>
+					</li>
+					<li>Profession</li> 	<input ng-model="portrait.profession"></input>
+					<li>Couleur de fond</li> <input colorpicker type="text" ng-model="portrait.color" />
+					<li><button type="button" ng-click="editIntro()" class="editerIntro btn btn-success">Editer l'introduction</button></li>
+					<li><button type="button" ng-click="editDots()" class="dotEditorButton btn btn-success">Editer les points</button></li>
+
+					<li>Image</li> 		<input type="file"  id="imageFile" name="image" accept="image/*" >
+					<div class="upload">
+						<input ng-click="upload('image')" name="file-picker"
+						id="uploadButton" class="imageClass" 
+						type="submit" onchange="readFile(this.files[0])">
+					</div>
+
+					<li>Vignette</li> 	<input type="file"  id="thumbnailFile" name="thumbnail" accept="image/*" >
+				</ul>
+					<div class="upload">
+						<input ng-click="upload('thumbnail')"
+						name="file-picker" id="uploadButton"
+						class="thumbnailClass" type="submit" onchange="readFile(this.files[0])">
+					</div>
+
+				<!-- Thumbnail Preview -->
+				<div class="fitThumbnail">
+					<img id="imgThumbnailId" 
+					ng-src="{{thumbnail.data && thumbnail.data || portrait.thumbnail.url}}"></div>
+
+				<!-- confirm button -->
+				<button type="button" ng-click="update(portrait)" ng-disabled="form.$invalid"
+					class="resetButton validerPortrait btn btn-success">Valider le Portrait</button>
+			</form>	
+
+			<!-- Back button -->
+			<a href="/editor">
+				<button type="button" class="resetButton annulerPortrait btn btn-success"> Retour</button>
+			</a>
+		</div>
+
+		<!-- end of left container -->
+
+		<!-- right image -->
+		<div class="editorIMG">
+			<div class="mainImgContainer">
+				<div class="fitImg {{portrait.thumbnail.format}}">
+					<img id="imgImageId" ng-src="{{imageToEdit.data && imageToEdit.data || portrait.image.url}}">
+				</div>
+			</div>
+		</div>
+		<!-- end right image -->
+
+		<!-- text editors -->
+
+
+
+		<div ng-show="showDotTextEditor" class="dotEditorText" ta-text-editor-class="textEditor" ta-html-editor-class="textEditor" text-angular ng-model="editedDot.data"></div>		
+		<span ng-show="showDotTextEditor" class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="hideDotEditor()"></span>
+
+
+
+
+		<div ng-show="showTextEditor" class="dotEditorText" ta-text-editor-class="textEditor" ta-html-editor-class="textEditor" text-angular ng-model="currDot.data"></div>
+		<span ng-show="showTextEditor"  class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="addDot()"></span>
+		<span ng-show="showTextEditor"  class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeText()"></span>
+		<div ng-show="showIntroTextEditor" class="introEditorText" ta-text-editor-class="textEditor" ta-html-editor-class="textEditor" text-angular ng-model="portrait.intro" placeholder="{{portrait.intro}}"></div>
+		<span ng-show="showIntroTextEditor" class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="addIntro()"></span>
+		<span ng-show="showIntroTextEditor" class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="removeIntroText()"></span>
+	</div>
+
+</div>

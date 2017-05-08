@@ -1,0 +1,13 @@
+<div ng-show="desktopVersion" id='mainWrapper'>
+	<div ng-include="'components/navbar/navbar.html'"></div>
+	<newsletter  ng-show="!portraitIsOn"></newsletter>
+
+	<div id="viewer">
+	    <left-viewer ng-click="foldToggle('left')" ng-class="openPanel.left"></left-viewer>
+	    <middle-viewer ng-click="foldToggle('middle')" ng-class="openPanel.middle"></middle-viewer>
+	    <right-viewer ng-click="foldToggle('right')" ng-class="openPanel.right" style="background-color: {{currentPortrait.color}};"></right-viewer>
+	</div>
+</div>
+<section ng-hide="desktopVersion"> 
+	<mobile-version> </mobile-version>
+</section>

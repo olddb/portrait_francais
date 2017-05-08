@@ -1,0 +1,387 @@
+/* header */
+/* commented out */
+#mobile-menu-logo {
+
+    position: fixed;
+    top: 15px;
+    left: 4%;
+
+    height: 22px;
+
+	z-index: 10;
+}
+.mobile-logo {
+
+    position: fixed;
+
+    height: 50px;
+
+    margin-left: 50vw;
+
+    z-index: 2;
+    color: white;
+    transform: translateX(-50%);
+
+}
+
+.mobile-leftWhiteNav, .mobile-rightWhiteNav {
+    position: fixed;
+
+    height: 50px;
+    width: -webkit-calc(50% - 108px);
+
+    /* z-index: 2; */
+    background-color: #fbfafa;
+}
+.mobile-leftWhiteNav {
+    left: 0; /* not necessary */
+}
+.mobile-rightWhiteNav {
+    right: 0;
+}
+
+/* presentation */
+#imageAndTextContainer {
+	position:relative;
+	z-index:8;
+    padding-top: 50px;
+}
+#presentationContainer {
+	position:relative;
+	z-index:9;
+    /* margin-left: 0px; */
+    /* height: 100vh; */
+    padding-top: 50px;
+}
+#mobileALaUne {
+
+	margin-top:15vh;
+	font-size:2.1vh;
+	/*min-width: 366px;*/
+
+}
+#mobileALaUneName {
+
+    text-align: center; 
+    color: white;
+    font-size: 4em;
+    word-spacing: 9999999px;
+    /* text-shadow: none; */
+    opacity : 1;
+    transition: opacity 1s linear;
+    transition: text-shadow 0.2s linear;
+	z-index:1;
+
+}
+#mobileALaUneProfession {
+
+    text-align: center;
+    color: white;
+    font-size: 1.7em;
+	font-family: Verlag;
+
+}
+/* i have no idea of what this is */
+.mobile-noselect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+/* image */
+/* mobilerightcontainer is above on presentation too */
+.mobilepage {
+	position:fixed;
+	top:50px;
+
+	width:100%;
+	height:100%;
+
+	font-size: 22px;
+	text-align: center;
+	z-index: 0;
+	/* warning: switch to -1 then */
+}
+.views {
+	position:fixed;
+	top:50px;
+
+	width:100%;
+	height:100%;
+
+	font-size: 22px;
+	text-align: center;
+	z-index: 12;
+	/* warning: switch to -1 then */
+}
+.mobilePortraitsList {
+	margin-top: 40px;
+	list-style-type: none;
+}
+.mobilePortraitsList li {
+	height:60px;
+}
+#mobilelandscape {
+	top: 20vh;
+}
+/* fitImg */
+.mobile-fitImg:hover [class*="motOnImg"] {
+    display: block;
+
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease;
+}
+/* l'image */
+.mobileImage {
+
+	width:100%;
+
+    transition: opacity 2s linear;
+
+}
+[class*="motOnImg"] {
+    position: absolute;
+
+    /* cursor: pointer; */
+    z-index: 10;
+    opacity: 0;
+    pointer-events:all;
+    transition: all 0.5s ease;
+}
+/* portrait under image */
+.smallportraitNameUnderImage {
+    position: fixed;
+    top: 84%;
+	left: 0;
+	right: 0;
+	/*min-width: 366px;*/
+
+	width: 100%;
+
+	text-align:center;
+
+    color: white;
+	font-size: 3vh;
+}
+
+/* Text on Portrait */
+.mobile-mainTxtContainer {
+
+	position: fixed;
+
+	margin-top: 40px;
+
+	transition: all 0s ease-in-out;
+
+}
+
+.mobile-txt {
+
+	/* position: absolute; */
+
+	height: 60vh;
+	width: 80vw;
+
+	margin-left: 10vw;
+
+	/* overflow: hidden; */
+	overflow-y: scroll;
+
+	text-align: justify;
+	/* transition: all 0s ease-in-out; */
+	background-color: white;
+}
+.cross {
+
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	height: 20px;
+
+	color: black;
+	font-size: 1.5em;
+
+}
+.mobile-introTxt {
+	padding: 15px 15px 15px 15px;
+}
+.portraitNameInIntro {
+	text-align:center;
+}
+
+.mobile-dotTxtContainer {
+    display: none;
+}
+/* touch icon */
+.touchIcon {
+
+	display:none;
+	position: absolute;
+	bottom:6vh;
+	right:5vh;
+	transform: rotate(-17deg);
+	z-index: 8;
+
+	height:50px;
+
+}
+/* arrow */
+.smallArrowName {
+
+    bottom: 27px;
+	transition: bottom 0.1s linear ; 
+
+}
+.bigArrowName {
+
+    bottom: 8vh;
+	transition: bottom 0.2s linear ; 
+
+}
+.smallName {
+    font-size: 1.7vh;
+	transition: font-size 0.2s linear ; 
+}
+.bigName {
+    font-size: 2.4vh;
+	transition: font-size 0.2s linear ; 
+
+	bottom:10px;
+}
+#mobileArrowNext p:first-child {
+
+
+}
+#mobileArrowNext {
+
+    text-align: center;
+    position: fixed;
+    height: 40px;
+    right: 0px;
+	left: 0px;
+	z-index:10;
+	/*min-width: 366px;*/
+
+}
+.mobileFadeIn {
+}
+
+.mobileNextName {
+
+	/* position: relative; */
+	margin:0;
+	/* transition: none; */
+
+}
+/* icono-arrow3-down not copied */
+
+
+
+
+/* views */
+.viewsColor {
+	background-color: #b8e1e1;
+}
+#mobile-invites {
+
+    margin-left: 10px;
+    padding-top: 40px;
+
+    color: black;
+    transition: all 1s ease;
+
+}
+#mobileredline {
+
+    height: 2px;
+    width: 102px;
+
+    margin-top: -10px;
+    margin-left: -webkit-calc(50% - 46px);
+
+    background-color: #e50000;
+
+}
+.starring {
+
+	padding-top: 10%;
+    padding-bottom: 60px;
+    padding-left: 10%;
+    padding-right: 10%;
+
+	padding-bottom: 60px;
+	font-size: 16px;
+	text-align:left;
+
+}
+.ov {
+	overflow:auto;
+	height: 100%;
+
+}
+.apropos {
+
+	padding: 10%;
+
+	font-size: 16px;
+	text-align:left;
+
+}
+.mobile-contact {
+	margin-top: 80px;
+	line-height: 6;
+}
+#mobile-fitImgFooter {
+	display: none;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 35px;
+	padding-left: 10px;
+	transform: translateX(100%);
+}
+#mobile-fitImgFooter {
+	display: none;
+	position: absolute;
+	margin-top: 10px;
+	bottom: 0px;
+	height: 35px;
+	transform: translate(-50%, 150%);
+}
+.mobile-fitImg  {
+	position: absolute;
+}
+#p1 {
+	display: inline-block;
+    color: white;
+	padding-top:0;
+	transition: padding-top 1s linear ; 
+}
+.mobile-red-dot{
+
+    position: fixed;
+
+    width: 37px;
+
+    height: 50px;
+    background-color: #f00;
+	right: -webkit-calc(50% - 129px);
+
+}
+.mobile-txt {
+	min-width: 292.8px;
+}
+.mobilepage {
+	/*min-width: 366px;*/
+}
+.fitImg.portrait.imgMobNext {
+    /*margin-left: 260px 	!important;*/
+    transform: none 	!important;
+}
+.landscape.imgMobNext {
+    left: 0px;
+    transform: translateX(0);
+}

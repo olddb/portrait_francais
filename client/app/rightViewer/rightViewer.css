@@ -1,0 +1,517 @@
+right-viewer {
+    z-index: 20;
+}
+.mainRightContainer {
+    width: 100%;
+    padding-right: 80px;
+}
+.dropdown-menu-wrapper {
+	visibility:visible;
+	overflow:hidden;
+	width:200px;
+	position:absolute;
+	left:60px;
+	top:100px;
+	height: 300px;
+}
+.misere {
+	visibility: hidden;
+	background-color:white;
+	position:absolute;
+	left:60px;
+	top:100px;
+	width:200px;
+	height: 20px;
+	z-index:9999999999999999;
+}
+.dropdown-menu {
+    width: 200px;
+    border: none;
+    box-shadow: none;
+    border-radius: 0 0 0 0;
+    overflow-y: scroll;
+    max-height: 300px;
+    margin-left: -62px;
+    margin-top: -40px;
+}
+.dropdown-menu {
+    border: none;
+    box-shadow: none;
+    border-radius: 0 0 0 0;
+    position: relative;
+    padding-top: 24px;
+	overflow-y:scroll;
+	width:220px;
+	top:-30px;
+	padding-bottom: 70px;
+}
+.dropdown {
+	visibility:visible;
+    text-align: center;
+    z-index: 9;
+    position: absolute;
+    border: none;
+    color: white;
+    margin-top: 120px;
+    margin-left: 60px;
+	width:220px;
+}
+.dropdown-toggle {
+	position:relative;
+	top:-100px;
+}
+.dropdown-toggle p {
+	position:relative;
+	left:-75px;
+}
+.dropdown-toggle:hover {
+    text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
+}
+.itemTitle {
+    color: white;
+    letter-spacing: 2px;
+    font-size: 0.9em;
+	padding-left:20px;
+}
+#blackTitle {
+    width: 200px;
+    left: 140px;
+    top: 100px;
+    padding-top: 20px;
+    padding-left: 6px;
+    position: fixed;
+    background-color: white;
+	height: 82px;
+}
+#blackTitle p {
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    color: black;
+}
+.invites {
+	position:relative;
+	left: 2px;
+}
+#blackTitle .redLine {
+    margin-left: 62px;
+}
+.redLine {
+    display: block;
+    width: 72px;
+    height: 2px;
+    background-color: #e50000;
+    margin-top: -10px;
+    margin-left: 8px;
+}
+#blackTitle > div:first-of-type {
+    margin-bottom: 10px;
+}
+.glyphicon-search {
+    color: black;
+}
+.whiteToTransparent {
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+    position:absolute;
+    height:25px;
+    width:180px;
+	top:82px;
+}
+.searchPortrait {
+    color: black;
+    margin-left: 8px;
+    text-align: center;
+    width:120px;
+}
+.portraitName {
+    font-size: 0.8em;
+    color: black;
+	margin-left:-18px;
+}
+.portraitName:hover {
+	cursor:pointer;
+}
+#searchNameContainer  a {
+    background-color: #ffffff;
+}
+a:hover {
+    text-decoration: none;
+}
+.white {
+    color: white;
+}
+#arrowNext p:first-child {
+    top: 10px;
+    color: white;
+    font-size: 10px;
+}
+#arrowNext:hover {
+    cursor: pointer;
+}
+#arrowNext {
+    text-align: center;
+    width: 150px;
+    position: fixed;
+    bottom: 50px;
+    height: 40px;
+    right: 0px;
+    margin-right: 10px;
+}
+#bottomRight {
+    width: 30%;
+}
+[class*="icono"] {
+    color: white!important;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    color: #666;
+    box-sizing: border-box;
+}
+[class*="icono"]:hover {
+    color: #aaa !important;
+}
+[class*="icono"]:after,
+[class*="icono"]:before {
+    content: "";
+    box-sizing: border-box;
+}
+[class*="icono-arrow3"] {
+    width: 18px;
+    height: 20px;
+    border-width: 4px 4px 0 0;
+    border-style: solid;
+    margin: 10px;
+    border-radius: 0 2px 0 0;
+}
+[class*="icono-arrow3"]:before,
+[class*="icono-arrow3"]:after {
+    border-radius: 2px;
+    position: absolute;
+}
+[class*="icono-arrow3"]:before {
+    right: 0;
+    top: -3px;
+    width: 23px;
+    height: 4px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: right top;
+    transform-origin: right top;
+    box-shadow: inset 0 0 0 32px;
+}
+[class*="icono-arrow3"]:after {
+    width: 4px;
+    height: 4px;
+    left: -2px;
+    top: -4px;
+    box-shadow: inset 0 0 0 32px, 16px 17px;
+}
+[class*="icono-arrow3"][class*="-down"] {
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+.fadeIn {
+  opacity: 1;
+  transition:opacity 0.3s linear ;
+}
+.fade.ng-show-remove,
+.fade.ng-show-add {
+  display: block !important;
+  transition:opacity 0.3s linear ;
+}
+.fadeIn.ng-hide-remove {
+  transition:opacity 0.3s linear ;
+}
+.fadeIn.ng-hide-add {
+  transition:opacity 0.3s linear ;
+}
+.fadeIn.ng-hide {
+  opacity: 0;
+  transition:opacity 0.3s linear ;
+}
+#RightContainer1 {
+    margin-left: 0px;
+    padding-right: 80px;
+    height: 100vh;
+}
+#RightContainer2 {
+    margin-left: 0px;
+    padding-top: 100px;
+    padding-right: 80px;
+    height: 100vh;
+}
+#aLaUne, #next, #prev{
+    max-width: 30%;
+    margin: auto;
+    transform: translateY(-50%);
+    min-width: 400px;
+    transition: margin-top 1s linear;
+}
+#aLaUne { margin-top: 50vh;}
+#aLaUneName {
+    font-family: "ScotchModern" !important;
+    text-align: center; 
+    color: white;
+    font-size: 4em;
+    word-spacing: 9999999px;
+    text-shadow: none;
+    opacity : 1;
+    transition: opacity 1s linear;
+    transition: text-shadow 0.2s linear;
+}
+#aLaUneNameLink { 
+    text-decoration:none;
+}
+#aLaUneName:hover {
+    cursor:pointer;
+}
+#aLaUneProfession {
+    text-align: center;
+    color: white;
+    font-size: 1.7em;
+	font-family: Verlag;
+}
+.mainRightContainer {
+    position: absolute;
+    height: 100vh;
+    animation-name: textAppear;
+    animation-duration: 2s;
+}
+.unfold .white {
+    display: none;
+}
+.fold .mainRightContainer {
+    display: none;
+}
+.envelope {
+    position: fixed;
+    color: white;
+    top: 130px;
+    right: 60px;
+    cursor:pointer;
+}
+.txt h1 {
+    text-align: center;
+}
+.ng-scope > p {
+    padding-top: 20px;
+    color: #dfdfdf;
+    margin-left: 10px;
+    transition: all 1s ease;
+ }
+ .selectedDot {
+    color: black !important;  
+ }
+.pristineDotClick .ng-scope:first-child > p:first-child {
+    color: #4ca5d3;
+}
+.introTxt {
+    padding: 15px 15px 15px 15px;
+}
+.xCloseIntroTxt:hover {
+    cursor:pointer;
+}
+.xCloseIntroTxt {
+    position: absolute;
+    font-size: 1.5em;
+    top: 5px;
+    right: 10px;
+    color: black;
+    z-index: 9;
+}
+.intro .xCloseIntroTxt {
+    top: calc(25vh - 60px);
+}
+circle:hover {
+    fill: #e7ec13; 
+}
+[class*="dotOnImg"]     {
+    cursor: pointer;
+    z-index: 999;
+    pointer-events:all;
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+.mainTxtContainer {
+    position: fixed;
+    width: 300px;
+    max-height: calc(100vh - 140px);
+    margin-top: 40px;
+    height: 100%;
+    transition: all 1s ease-in-out;
+}
+.txt {
+    top: 0;
+    transform: translateY(0);
+    min-width: 100%;    
+    height: 100%;
+    max-height: calc(100% - 100px);
+    background-color: white;
+    overflow: hidden;
+    overflow-y: scroll;
+    text-align: justify;
+    transition: all 1s ease-in-out;
+    position: absolute;
+}
+.mainImgContainer {
+    position: fixed;
+    width: calc(100% - 160px);
+    max-height: calc(100vh - 140px);
+    margin-top: 20px;
+    height: 100%;
+    padding-left: calc(180px + 5vw);
+    /*transition: all 1s ease-in-out;*/
+}
+.mainImgContainer .fitImg  {
+    display: inline-block;
+    margin-left: 0;
+}
+.fitImg:hover [class*="dotOnImg"] {
+    visibility: visible;
+    display: block;
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+.fitImg.portrait {
+    position: relative;
+}
+.mainImgContainer .fitImg  {
+    height: 100%;
+    max-width: 100%;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;    
+    user-select: none;
+
+    /*width: 100%;*/
+
+    /*background-color: grey;*/
+}
+.zoomContainer:hover {
+    cursor: none !important;
+}
+.zoomWrapper {
+    display: none;
+    z-index: -100;
+}
+.noMagnifier {
+    /*transition: all 1s ease-in-out;*/
+}
+/*Footer of Portrait pinteres twitter*/
+
+.goZoom {
+    height: 25px;
+    display: inline-block;
+    color: white;
+}   
+.goZoom:hover {
+    cursor: pointer;
+}
+#fitImgFooter {
+    position: absolute;
+    display: none;
+    bottom: 0px;
+    height: 35px;
+}
+#fitImgFooter {
+    float: left;
+}
+.fitImg.portrait #fitImgFooter {
+    right: 0;
+    padding-left: 10px;
+    transform: translateX(100%);
+}
+#pinterestFooter, #twitterFooter{
+    max-height: 24px;
+    transform: none;
+    margin-left: 0;
+    max-width: 100%;
+    display: inline-block;  
+}
+
+.landscape #fitImgFooter {
+    right: 0px;
+    transform: translateX(100%);
+}
+.landscape #twitterFooter, .landscape #pinterestFooter {
+}
+.noMagnifier, .zoomWrapper img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.landscape {
+    max-height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/*Intro*/
+.mainTxtContainer.intro {
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0s linear 0s;
+}
+.mainTxtContainer {
+    position: fixed;
+    width: 350px;
+}
+.mainTxtContainer.intro .txt{
+    top: calc(50vh - 60px);
+    transform: translateY(-50%);
+    transition: all 0s linear;
+    max-height: 50vh;
+}
+.mainImgContainer.intro {
+    padding-left: 0px;
+    transition: all 0s ease-in-out;
+}
+.intro .fitImg.portrait {
+    display: inline-block;
+    height: 100%;
+    min-width: 200px;
+    transform: translateX(-50%);
+    margin-left: 50%;
+}
+.dotTxtContainer {
+    display: none;
+}
+.txtNext {
+    right: 0px;
+    transform: translateX(-25%);
+}
+.fitImg.portrait.imgNext {
+    margin-left: 260px !important;
+    transform: none !important;
+}
+.landscape.imgNext {
+    left: 0px;
+    transform: translateX(0);
+}
+@media screen and (min-width: 1700px){
+    .mainTxtContainer.intro {
+        width: 400px;
+    }
+}
+@media screen and (max-width: 1300px){
+    .mainTxtContainer {
+        width: 250px;
+    }
+    .mainTxtContainer.intro {
+        width: 250px;
+    }
+}
+.pinButton span{
+    top:4px;
+}
+
+#customDot {
+    font-size: 2em;
+}

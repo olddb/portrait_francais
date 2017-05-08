@@ -1,0 +1,190 @@
+html,
+body {
+/*background-color: #071b34;*/s
+    overflow: hidden;
+    margin: none;
+    height: 100%;
+    font-family: "ScotchModern";
+}
+
+#mainWrapper {
+    /*min-width: 1400px;*/
+    width: auto;
+    overflow-x: scroll;
+}
+
+@font-face {
+  font-family: "ScotchModern";
+  src: url("../public/police/ScotchModern-Bold.otf");
+}
+@font-face {
+  /*font-family: "Verlag";*/
+  /*src: url("../public/police/Verlag.otf");*/
+}
+
+body {
+    font-family: 'Cantarell', sans-serif;
+    transition: background-color 1s ease;
+}
+
+left-viewer,
+middle-viewer,
+right-viewer {
+    min-width: 40px;
+    float: left;
+    height: 100vh;
+}
+
+.fold {
+    width: 40px;
+    transition: width 0.7s ease ;
+    transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+}
+
+middle-viewer .fold {
+    transition-timing-function: cubic-bezier(0.5,0.75,0.95,1);
+}
+
+.loaded .fold,
+.loaded .unfold {
+    /*animation-duration: 0.5s;*/
+}
+
+.unfold {
+    width: calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
+    transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+    transition: width 0.7s ease;
+ }
+
+[class*="keyword"] {}
+    
+a,
+a:hover,
+a:active,
+a:focus {
+    outline: 0;
+}
+
+/*NAVBAR*/
+
+.navbar {
+    padding-top: 2em;
+    height: 100px;
+}
+
+#logo {
+    font-size: 3em;
+    text-align: center;
+}
+
+#logoContainer {
+    position: fixed;
+    z-index: 25;
+}
+
+#topRight {
+    text-align: right;
+    right: 0;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+#redDot {
+    color: red;
+}
+
+.navbar-toggle.navbar-left {
+    float: left;
+    margin-left: 20px;
+    margin-top: -20px;
+    border: none;
+}
+
+.navbar-left:hover,
+.navbar-left:active,
+.navbar-left:focus {
+    background-color: white !important;
+    color: white !important;
+}
+
+.listOfPortrait {
+    cursor: pointer;
+    cursor: hand;
+    width: 100%;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    z-index: 2;
+    width: 9px;
+    /* for vertical scrollbars */
+    height: 2px;
+    /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+    /*background: white;*/
+}
+
+::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+.exteriorLinks {
+    width: 20px;
+    height: 20px;
+}
+
+/*Viewer*/
+#viewer {
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+.noselect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+/*old stuff*/
+.icon-bar {
+    display: none;
+}
+.bar {
+    background-color: black !important;
+}
+
+.titleContainer p {
+    cursor:  pointer;
+    display: inline-block;
+}
+
+@keyframes foldIn {
+  from {
+    width: 40px;
+  }
+  to {
+    width: calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
+  }
+}
+@keyframes foldOut {
+  from {
+    width: calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
+}
+  to {
+    width: 40px;
+  }
+}
+
+
+.glyphicon.glyphicon-one-fine-dot:before {
+    content: "\25cf";
+    color:white;
+    font-size: 1.5em;
+}

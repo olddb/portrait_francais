@@ -1,0 +1,63 @@
+.panel {
+	background-color: #b8e1e1;
+	position:fixed;
+	width:50%;
+	font-size: 16px;
+	top:50px;
+	height:100%;
+	min-width: 100px;
+	text-align: center;
+	z-index: 16;
+	border-radius: 0px;
+	box-shadow: 1px 1px 1px #999999;
+
+}
+.panel li {
+	height:60px;
+}
+.panel li:first-child{
+	margin-top: 3vh;
+}
+
+
+.mobileIconsContainer li:first-child{
+	margin-top: 3vh;
+}
+
+.mobileIconsContainer li:nth-child(4) {
+	margin-top: 6vh;
+}
+
+.mobileIconsContainer li {
+	margin-bottom:2vh;
+}
+
+.mobileIconsContainer a {
+	/* annule "li a" dans editor.css */
+	padding:0px;
+}
+
+.mobilepanelroundicons {
+
+	height:62px;
+
+	padding-bottom: 16px;
+
+}
+.envelope {
+	font-size: 14px;
+}
+.redline {
+    display: block;
+    width: 100px;
+    height: 2px;
+    background-color: red;
+	margin:auto;
+	z-index: 2;
+}
+.off {
+	right: -1000px;
+}
+.mobile-envelope {
+	color: #999999;
+}

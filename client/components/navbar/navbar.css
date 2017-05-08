@@ -1,0 +1,102 @@
+#navy {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: auto;
+    z-index: 1;
+    background-color: transparent;
+    border: none; 
+}
+.navbar-default {
+    background-color: transparent;
+    border: none; 
+}
+.navbar {
+    padding-top: 2em;
+    height: 100px;
+    position:relative;
+}
+#logoContainer {
+    position: fixed;
+}
+#topRight {
+    text-align: right;
+    right: 0;
+    margin-right: 10px;
+    display: inline-block;
+}
+.socialIcons {
+    margin-right: -20px;
+}
+.socialIcons img {
+    position: relative;
+    margin-right:6px;
+    max-width: 15px;
+    z-index: 15;
+}
+.redDot {
+    width: 37px;
+    position: fixed;
+    right: -webkit-calc(50% - 221px);
+    right: calc(50% - 221px);
+    height: 90px;
+    background-color: red;
+}
+.logo {
+    position: fixed;
+    z-index: 10;
+    height: 100px;
+    /*margin-left: ;*/
+    margin-left: -webkit-calc(50% - 220px);
+    margin-left: calc(50% - 220px);
+}
+.svgLogo{
+    height: 100px;
+}
+.mainLogo {
+    width: 30%;
+    width: -webkit-calc(0% + 200px);
+    width: calc(0% + 200px);
+}
+
+.navbar-static-top {
+    z-index: 0;
+}
+.nav-left,.nav-right {
+    position:absolute;
+    top:40px;
+    border: none;
+}
+.nav-left{
+    left:60px;
+}
+.nav-right {
+    right:60px;
+}
+.leftWhiteNav, .rightWhiteNav {
+    position: fixed;
+    height: 100px;
+    width: 30%;
+    width: -webkit-calc(50% - 210px);
+    width: calc(50% - 210px);
+    background-color: #fbfafa;
+}
+.leftWhiteNav {
+    left: 0;
+}
+.rightWhiteNav {
+    right: 0;
+}
+
+
+@media screen and (max-width: 1200px){
+    .nav-left {
+        left: 10px;
+    }
+}
+
+.nav-left {
+    font-family: "ScotchModern" !important;
+}
+
+/*030279*/

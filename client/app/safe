@@ -1,0 +1,83 @@
+.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+
+//▶  // Here's an example of how you might allow case insensitive urls
+	$urlRouterProvider.rule(function ($injector, $location) {
+		var path = $location.path(),
+			normalized = path.toLowerCase();
+
+			if (path !== normalized) {
+				return normalized;
+			}
+	}); //」
+
+	$location.replace().path(normalized);
+	$stateProvider.
+		state('landing', {
+			url: '/',
+			templateUrl: 'modules/core/partials/landing/landing.client.view.html'
+		}).
+			state('home', {
+				url: '/home',
+				templateUrl: 'modules/core/partials/home/home.client.view.html'
+			}).
+				state('panel-admin', {
+					url: '/panel-admin',
+					templateUrl: 'modules/core/partials/panel/panel-admin.client.view.html',
+					resolve: {
+						security: ['$q', 'Authentication', function($q, Authentication){
+							console.log("user:");
+							console.log(Authentication.user);
+							if (Authentication.user.roles[0] !== 'admin'){
+								console.log("Not Authorized");
+								return $q.reject("Not Authorized");
+							}
+						}]
+					}
+				}).
+					state('newsletter', {
+						url: '/newsletter',
+						templateUrl: 'modules/core/views/newsletter.client.view.html'
+					})
+					$urlRouterProvider
+					.otherwise('/');
+
+					$locationProvider.html5Mode(true);
+					$httpProvider.interceptors.push('authInterceptor');
+})
+//▶  authInterceptor
+.factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+	return {
+		// Add authorization token to headers
+		request: function (config) {
+			config.headers = config.headers || {};
+			if ($cookieStore.get('token')) {
+				config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+			}
+			return config;
+		},
+
+        // Intercept 401s and redirect you to login
+        responseError: function (response) {
+            if (response.status === 401) {
+                $location.path('/login');
+                // remove any stale tokens
+                $cookieStore.remove('token');
+                return $q.reject(response);
+            } else {
+                return $q.reject(response);
+            }
+        }
+    };
+}) //」
+//▶  run
+.run(function ($rootScope, $location, Auth) {
+    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+        Auth.isLoggedInAsync(function (loggedIn) {
+            if (next.authenticate && !loggedIn) {
+                event.preventDefault();
+                $location.path('/login');
+            }
+        });
+    });
+}); //」

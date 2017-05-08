@@ -1,0 +1,391 @@
+//'use strict';
+
+angular.module('portraitfrancaisApp')
+.controller('EditorCtrl', function ($scope, $http, portraitsFactory, $stateParams, Portraits, $location, $timeout) {
+
+	$scope.currDot = {};
+	$scope.countDot = 0;
+
+	portraitsFactory().$promise.then(function(portraits) {
+		$scope.portraits 	= handleAPropos(portraits);
+		var portraitInUrl 	= $stateParams.portrait ? $stateParams.portrait.replace("_", " ") : "";//used by top left corner portrait name
+		$scope.portrait 	= portraitInUrl ? findPortraitToEdit(portraitInUrl) : null;
+		$scope.portraits = $scope.portraits.map(function (ptr) {
+			if (typeof(ptr.dots) == 'string') {
+				ptr.dots = JSON.parse(ptr.dots);
+			}
+			return (ptr);
+		});
+<<<<<<< HEAD
+		console.log($scope.portrait);
+=======
+>>>>>>> origin/dotOver
+		if ($scope.portrait && $scope.portrait.dots) {
+			$scope.displaydots();
+			// console.log($scope.portrait.dots);
+			$scope.countDot = $scope.portrait.dots.length;
+		}
+<<<<<<< HEAD
+		else {
+			if ($scope.portrait)
+				$scope.portrait.dots = [];
+=======
+		else if (portraitInUrl) {
+			$scope.portrait.dots = [];
+>>>>>>> origin/dotOver
+		}
+		console.log('initial = ' + $scope.countDot);
+	});
+
+
+
+	//▶   DISPLAY DOTS
+	$scope.displaydots = function () {
+		if ($scope.portrait.dots.length) {
+			$scope.portrait.dots.forEach( function (dot) {
+					var str = '';
+                    str = "<svg class=\"dotOnImg" + dot.ordre +"\" height=\"15\" width=\"15\""
+					+ "style=\"left:calc("
+					+ dot.coordX
+					+ "% - 5px);top:calc("
+					+ dot.coordY
+					+ "% - 5px);";
+					str += "\"><circle cx=\"5\" cy=\"5\" r=\"5\" fill=\"white\"/></svg>";
+					$('.fitImg').append(str);
+				}
+			);
+		}
+	}
+	//」
+	$scope.upload = function() {
+		var f = document.getElementById('file').files[0]
+		if (!f){return;}
+
+		$scope.imgPath = f.name;
+		console.log($scope.imgPath);
+			var imgsize = f.size/1024; 
+		if (imgsize > 5000) {
+			alert("Max size: 5Mb. Please consider uploading a lighter image. Thank you.");
+			return;
+		} else {
+			console.log("upload started");
+			$('body').css('cursor','wait');
+			$('upload').css('cursor','wait');
+
+			var r = new FileReader();
+
+			//▶  onload
+			r.onload = function(e) {//terminé avec success }
+			};
+			//」
+			//▶  onloadend
+			r.onloadend = function(e){
+				var img = e.target.result;
+				$('body').css('cursor','default');
+				$('upload').css('cursor','default');
+				console.log("load completed");
+				$("#portraitImage").load(function() {
+					var img = $('#portraitImage')
+					console.log(img);
+					var w = img.width();
+					console.log(w);
+					var y = img.height();
+					console.log(y);
+					$('.fitImg').css({
+						width: w,
+						height: y
+					});
+				})
+				setTimeout(function () {
+					$scope.$apply(function(){
+						$scope.portrait.img = img;
+					});
+				}, 10);
+
+
+			}
+			//」
+			r.readAsDataURL(f);
+			//▶  readfile
+			function readFile(file) {
+				r.onloadstart=loadstartHandler;
+				r.onprogress=progressHandler;
+				r.onabort=abortHandler;
+				r.onerror=errorHandler;
+				r.onload=loadHandler;
+				r.onloadend=loadendHandler;
+			}
+			//」
+		}
+	}
+
+	$scope.update = function(portrait) {
+			console.log("update");
+		portrait = portrait;
+		Portraits = Portraits;
+		if ($scope.portrait.img){
+			portrait.img 		= $scope.portrait.img
+			portrait.imgPath  	= $scope.imgPath
+		}
+
+		//update
+		if (portrait._id){
+			portrait.dots = JSON.stringify(portrait.dots);
+			portrait.$update({portrait: portrait._id}, function(portraitUpdated) {
+				$location.path('editor');
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		}
+		else {
+<<<<<<< HEAD
+			//create
+			//send you binary data via $http or $resource or do anything else with it
+
+			portrait = new Portraits ({
+				//▶  //implemented
+				name 		: portrait.name,
+				img 		: portrait.img,
+				imgPath 	: portrait.imgPath,
+				color 		: portrait.color,
+				profession 	: portrait.profession,
+				dots 		: JSON.stringify(portrait.dots),
+
+				//not implemented
+				intro 		: portrait.intro,
+				format 		: portrait.format,
+				alaune 		: portrait.alaune,
+				fulltxt 	: portrait.fulltxt
+				//」
+			});
+
+			//▶   Redirect after save
+			portrait.$save(function(response) {
+				console.log("response", response);
+				$location.path('/editor');
+
+				// Clear form fields
+				$scope.img 			= '';
+				$scope.name 		= '';
+				$scope.dots 		= '';
+				$scope.alaune 		= '';
+				$scope.profession 	= '';
+
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+				console.log($scope.error);
+			});
+			//」
+		}
+	};
+=======
+			var f = document.getElementById('file').files[0]
+			var r = new FileReader();
+
+			r.readAsDataURL(f);
+			r.onloadend = function(e){
+				var img = e.target.result;
+				// console.log(img);
+				// console.log('portrait.dots');
+				// console.log(portrait.dots);
+				//send you binary data via $http or $resource or do anything else with it
+
+				portrait = new Portraits ({
+					//▶  //implemented
+					name 		: portrait.name,
+					img 		: img,
+					imgName 	: f.name,
+					color 		: portrait.color,
+					profession 	: portrait.profession,
+					dots 		: JSON.stringify(portrait.dots),
+
+					//not implemented
+					intro 		: portrait.intro,
+					format 		: portrait.format,
+					alaune 		: portrait.alaune,
+					fulltxt 	: portrait.fulltxt
+					//」
+				});
+
+				// Redirect after save
+				portrait.$save(function(response) {
+					$location.path('/editor');
+
+					// Clear form fields
+					$scope.img 			= '';
+					$scope.name 		= '';
+					$scope.dots 		= '';
+					$scope.alaune 		= '';
+					$scope.profession 	= '';
+
+				}, function(errorResponse) {
+					$scope.error = errorResponse.data.message;
+					console.log($scope.error);
+				});
+			}
+		};
+	}
+>>>>>>> origin/dotOver
+
+	$scope.remove = function(portrait) {
+		if (confirm('Voulez vous supprimer definitivement le portrait ?')) {
+			//lookup of portraitName in $scope.portraits
+			portrait.$remove({portrait: portrait._id}, function(portraitRemoved) {
+				var id = $scope.portraits.map(function(e) { return e._id; }).indexOf(portraitRemoved._id);
+				$scope.portraits.splice(id,1);
+				$location.path('editor');
+			});
+		}
+	}
+
+	//  button redirection to Portrait Creation/Edition view
+	$scope.goToEditPortrait = function (portrait) {
+		portrait = portrait ? portrait : 'new';
+		$location.path('/editor/' + portrait);
+	}
+
+	// find portrait to edit
+	function findPortraitToEdit (name) {
+		if (name == 'new') 
+			return {}
+		var result = $scope.portraits.filter(function( portrait ) {
+			return portrait.name == name;
+		});
+		return (result[0]);
+	}
+
+	function handleAPropos (portrait) {
+		var cleanPortrait = [];
+		var cleanIndex = 0;
+
+		for (var j = 0; j < portrait.length; j++) {
+			if (portrait[j].apropos) {
+				var aproposIndex = j;
+			}
+		}
+		for (j = 0; j < portrait.length; j++) {
+			if (j === aproposIndex) { j++; }
+			if (portrait[j]) {
+				cleanPortrait[cleanIndex] = portrait[j];
+				if (typeof(cleanPortrait[cleanIndex].dots) == 'string') {
+					cleanPortrait[cleanIndex].dots = JSON.parse(portrait[j].dots);
+				}
+				cleanIndex++;
+			}
+		}
+		$scope.apropos = portrait[aproposIndex];
+		return (cleanPortrait);
+	};
+
+	$("#modifierAPropos").click(function(){
+		$("#aProposEditor").slideDown();
+	});
+
+	$("#closeAPropos").click(function(){
+		$("#aProposEditor").slideUp();
+	});
+
+
+	$scope.showTextEditor = false;
+
+	$('.fitImg').click(function(e) {
+		var posX = $(this).offset().left, posY = $(this).offset().top;
+		var totalX = $('.fitImg').width();
+		var totalY = $('.fitImg').height();
+
+		$scope.currDot.coordX = ((e.pageX - posX) / totalX) * 100;
+		$scope.currDot.coordY = ((e.pageY - posY) / totalY) * 100;
+		$scope.previewDot();
+		$timeout(function() {
+			if (confirm("Voulez-vous creer un point a cet endroit ?")) {
+				// $scope.newDots.forEach( function (dot) { dot.preview = false; });
+				$scope.showTextEditor = true;
+				$scope.$apply();
+				removePreview();
+			}
+			removePreview();
+		}, 500);
+	});
+
+	function removePreview () {
+		$('.preview').remove();
+		// $scope.newDots.splice($scope.newDots.indexOf('preview'), 1);
+		if ($scope.portrait.dots.length) {
+			$scope.portrait.dots = $scope.portrait.dots.filter( function (dot) {
+				if (dot) {
+					if (dot.preview === false) {
+						return (dot);
+					}
+				};
+			});
+		}
+	};
+
+	$scope.previewDot = function () {
+		$scope.portrait.dots.push({
+			coordY : $scope.currDot.coordY,
+			coordX : $scope.currDot.coordX,
+			data : $scope.currDot.data,
+			preview : true
+		});
+		$scope.portrait.dots.forEach( function (dot) {
+			var str = '';
+			str = "<svg class=\"dotOnImg preview\" height=\"15\" width=\"15\""
+			+ "style=\"left:calc("
+			+ $scope.currDot.coordX
+			+ "% - 5px);top:calc("
+			+ $scope.currDot.coordY
+			+ "% - 5px);";
+			str += "\"><circle cx=\"5\" cy=\"5\" r=\"5\" fill=\"white\"/></svg>";
+			$('.fitImg').append(str);
+		}
+									);
+	}
+
+	$scope.addDot = function () {
+		$scope.countDot++;
+		console.log('before add ' + $scope.countDot);
+		// console.log({
+		// 	coordY : $scope.currDot.coordY,
+		// 	coordX : $scope.currDot.coordX,
+		// 	data : $scope.currDot.data,
+		// 	ordre: $scope.countDot,
+		// 	preview: false
+		// });
+		$scope.portrait.dots.push({
+			coordY : $scope.currDot.coordY,
+			coordX : $scope.currDot.coordX,
+			data : $scope.currDot.data,
+			ordre: $scope.countDot,
+			preview: false
+		});
+		console.log('after add ' + $scope.countDot);
+		// console.log($scope.portrait);
+		$scope.displaydots();
+		$scope.currDot.data = '';
+		$scope.showTextEditor = !$scope.showTextEditor;
+	};
+
+	$scope.removeText = function () {
+		$scope.currDot.data = '';
+	};
+
+	$scope.showIntroTextEditor = false;
+	$scope.editIntro = function () {
+		if ($scope.showIntroTextEditor == false) {
+			$scope.showIntroTextEditor = true;
+			$scope.showTextEditor = false;
+		}
+		else { $scope.showIntroTextEditor = false; }
+	};
+
+	$scope.addIntro = function () {
+		$scope.showIntroTextEditor = false;
+		$scope.showTextEditor = false;
+	};
+
+	$scope.removeIntroText = function () {
+		$scope.portrait.intro = '';
+	};
+
+});

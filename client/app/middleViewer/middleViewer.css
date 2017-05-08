@@ -1,0 +1,223 @@
+middle-viewer {
+    background-color: #d7f1e0;
+    z-index: 2;
+}
+
+middle-viewer .title {
+    margin: 0 auto;
+    word-wrap: break-word;
+    margin-top: 110px;
+    font-size: 12px;
+    width: 1em;
+    letter-spacing: 5px;
+}
+
+.titleContainer {
+    text-align: center;
+    width: 40px;
+}
+
+@-moz-document url-prefix() {
+    .title br:first-child {
+        display: none;
+    }
+}
+
+.fold #galleryContainer {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s ease;
+    transition: opacity 1s ease;
+}
+
+.unfold #galleryContainer {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.5s, opacity 0.5s ease;
+    transition: opacity 1s ease;
+}
+
+#galleryContainerWrapper {
+    height: 100%;
+    width: calc(100% - 70px);
+    position: absolute;
+    top: 0;
+    padding: 140px 0 0 40px;
+
+	overflow:hidden;
+}
+#galleryContainer {
+	/* visibility:visible; */
+    height: 100%;
+    width: 	calc(100% + 50px);
+    position: absolute;
+    top: 0;
+	left:-30px;
+    padding: 140px 0 0 40px;
+
+    /* transition: 2.7s visibility linear; */
+	margin-right: -16px;
+    overflow-y: scroll;
+    /*width: calc(100% - 160px);*/
+    overflow-x: hidden;
+}
+
+.galleryColone {
+    position: relative;
+    display: block;
+    height: 100%;
+}
+
+/* #aProposTexte {
+    height: calc(100% - 100px);
+    display: block;
+    width: calc(100% - 80px);   
+    /*max-height: 100vh;*/
+    /*margin-top: 50px;
+    padding-left: 40px;
+    padding-top: 50px;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+} */
+
+.galleryColone > div {
+    padding: 0 10px 0 10px;
+}
+
+
+.threeColumn {
+    width: 33.33%;
+    float: left;
+}
+
+[class*="Column"] {
+    margin-bottom: 40px;
+}
+
+.column1_3 .galleryThumbnail{
+    display: block;
+    float: right;
+    clear: right;
+}
+
+.column2_3 .galleryThumbnail {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.column3_3 .galleryThumbnail{
+    display: inline-block;
+    vertical-align:top;
+}
+
+.column1_2 .galleryThumbnail{
+    float: right;
+}
+.column1_2 {
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+.column2_2 {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.galleryThumbnailContainer {
+    width: 100%;
+}
+
+.galleryThumbnail {
+    margin-bottom: 10px;
+    display: inline-block;
+    max-width: 80%;
+}
+
+.galleryThumbnail img{
+    max-width: 100%;
+    height: auto;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 10px 10px 35px 10px;
+    filter: gray; /* IE6-9 */
+    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    transition: 0.5s -webkit-filter linear;
+    z-index: 3;
+}
+
+.galleryThumbnail img:hover{
+    cursor: pointer;
+    border-color: white;
+    filter: none;
+    -webkit-filter: grayscale(0%);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale")];
+    transition: 0.7s -webkit-filter linear;
+}
+
+.galleryThumbnail p {
+    display: none;
+    text-align: center;
+    margin-top: -25px;
+    z-index: 20;
+    background:white;
+    line-height: 25px;
+}
+
+legend {
+    position: relative;
+    color : transparent;
+    font-size: 15px;
+    text-align: center;
+    margin-top: -30px;
+    z-index: 20000;
+    border-bottom: 0px;
+}
+img:hover + legend {
+    color: black;
+}
+
+@media screen and (max-width: 800px) {
+    .threeColumn,.twoColumn  {
+        display: none;
+    }
+    .oneColumn{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .threeColumn,.oneColumn  {
+        display: none;
+    }
+    .twoColumn{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .threeColumn {
+        display: block;
+    }
+    .twoColumn,.oneColumn {
+        display: none;
+    }
+}
+
+#galleryContainer .blackLogo {
+    position: absolute;
+    width: 410px;
+    top: 0;
+    left: calc(50% - 210px);
+    height: 95px;
+    background-image:
+    linear-gradient(
+        to bottom,
+        black 90%, 
+        #d7f1e0
+    );
+}
